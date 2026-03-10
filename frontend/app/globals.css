@@ -1,26 +1,35 @@
 @import "tailwindcss";
 
+/* กำหนดสีพื้นหลังและสีตัวอักษรให้ชัดเจน */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a; /* ดำสนิท */
+  --foreground: #ffffff; /* ขาวบริสุทธิ์ */
+  --accent-gold: #ca8a04; /* สีเหลืองทองสำหรับปุ่ม (ไม่ให้ลามไปทั้งหน้า) */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ล้างค่าสีติดเหลืองที่อาจมาจากตัวแปรระบบ */
+* {
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background) !important;
+  color: var(--foreground) !important;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  /* ป้องกันสีเพี้ยนจาก Filter */
+  filter: none !important; 
+}
+
+/* ปรับแต่ง Scrollbar ให้เป็นสีทองเท่ๆ แทนสีขาวเดิม */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-gold);
+  border-radius: 10px;
 }
